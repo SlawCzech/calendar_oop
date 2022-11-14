@@ -1,6 +1,8 @@
 import datetime
+import json
 import random
-from pprint import pprint
+
+from example_data_generator import event_data, events, reminder_data, reminder_events, workshop_data, workshops
 
 
 class DataGenerator:
@@ -19,7 +21,7 @@ class DataGenerator:
         for idx in range(amount):
             event = {
                 'idx': idx,
-                'start_date': self.beginning_date + datetime.timedelta(hours=random.randint(1, 5000)),
+                'start_date': f'{self.beginning_date + datetime.timedelta(hours=random.randint(1, 5000)):%Y/%m/%d, %H:%M}',
                 'duration': random.randint(*self.duration_range),
                 'title': random.choice(self.titles),
                 'description': random.choice(self.descriptions),
@@ -34,18 +36,16 @@ class DataGenerator:
 
             events.append(event)
 
-        pprint(events)
+        return events
+
+    @staticmethod
+    def save_data(data, path):
+        with open(path, 'w') as file:
+            json.dump(data, file)
 
 
-d = DataGenerator(
-    datetime.date.today() + datetime.timedelta(days=10),
-    (15, 180),
-    ['lunch', 'ceo meeting', 'lecture', 'seminar', 'sport event'],
-    ['nice meeting', 'troublesome meeting', 'god, I hate that', 'kill me please', 'emergency meeting'],
-    ['ryszard ochodzki', 'wacek', 'szwedka', 'trener', 'minister'],
-    False,
-    True
-)
+event_data.save_data(events, 'events_data.json')
 
-d.generate_data(50)
+reminder_data.save_data(reminder_events, 'reminder_data.json')
 
+workshop_data.save_data(workshops, 'workshop_data.json')
