@@ -2,8 +2,6 @@ import datetime
 import json
 import random
 
-# from example_data_generator import event_data, events, reminder_data, reminder_events, workshop_data, workshops
-
 
 class DataGenerator:
     def __init__(self, beginning_date, duration_range, titles, descriptions, users, reminder=False, workshop=False):
@@ -29,10 +27,10 @@ class DataGenerator:
             }
 
             if self.reminder:
-                event['reminder'] = random.choice([True, False])
+                event['remind'] = random.choice([True, False])
 
             if self.workshop:
-                event['workshop'] = random.choices(self.users, k=random.randint(3, 20))
+                event['participants'] = random.choices(self.users, k=random.randint(3, 20))
 
             events.append(event)
 
@@ -49,7 +47,6 @@ class DataGenerator:
             return json.load(file)
 
 
-d = DataGenerator.load_data('data.json')
+d = DataGenerator.load_data('events_data.json')
 
 print(d)
-
