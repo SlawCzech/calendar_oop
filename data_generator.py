@@ -2,7 +2,7 @@ import datetime
 import json
 import random
 
-from example_data_generator import event_data, events, reminder_data, reminder_events, workshop_data, workshops
+# from example_data_generator import event_data, events, reminder_data, reminder_events, workshop_data, workshops
 
 
 class DataGenerator:
@@ -43,9 +43,13 @@ class DataGenerator:
         with open(path, 'w') as file:
             json.dump(data, file)
 
+    @staticmethod
+    def load_data(path):
+        with open(path, 'r') as file:
+            return json.load(file)
 
-event_data.save_data(events, 'events_data.json')
 
-reminder_data.save_data(reminder_events, 'reminder_data.json')
+d = DataGenerator.load_data('data.json')
 
-workshop_data.save_data(workshops, 'workshop_data.json')
+print(d)
+

@@ -32,3 +32,10 @@ workshop_data = DataGenerator(
     True
 )
 workshops = workshop_data.generate_data(50)
+
+
+event_data.save_data(events, 'events_data.json')
+
+reminder_data.save_data(reminder_events, 'reminder_data.json')
+
+workshop_data.save_data(workshops, 'workshop_data.json')
