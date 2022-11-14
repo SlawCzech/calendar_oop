@@ -31,6 +31,7 @@ class Event:
     def start_date(self, new_start_date):
         if not isinstance(new_start_date, datetime):
             raise TypeError(f'Provided value is not date or time: {type(new_start_date)}')
+
         if datetime.now() + timedelta(hours=1) > new_start_date:
             raise ValueError(f'{type(self).__name__} should start in one hour the earliest.')
 
@@ -44,3 +45,6 @@ class Event:
         attrs = ', '.join(
             f'{key[1:] if key.startswith("_") else key}={repr(value)}' for key, value in vars(self).items())
         return f'{type(self).__name__}({attrs})'
+
+
+
