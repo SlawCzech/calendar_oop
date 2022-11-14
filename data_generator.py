@@ -47,6 +47,6 @@ class DataGenerator:
             return json.load(file)
 
 
-d = DataGenerator.load_data('events_data.json')
+# d = DataGenerator.load_data('events_data.json')
 
-print(d)
+# print(d)
