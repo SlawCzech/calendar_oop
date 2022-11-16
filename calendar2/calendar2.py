@@ -18,7 +18,7 @@ class Calendar:
         for event in self._events:
             if datetime.datetime.now() < event.start_date < datetime.datetime.now() + datetime.timedelta(weeks=4):
                 counter += 1
-            return f'You have {counter} events in next four weeks.'
+        return f'You have {counter} events in next four weeks.'
 
     @events.setter
     def events(self, value):
@@ -38,19 +38,32 @@ class Calendar:
 
         return events
 
+    def filter_by_duration(self, duration=None, duration_min=0, duration_max=None):
+        if duration is not None:
+            duration_min = duration_max = duration
+
+        events = []
+
+        for event in self._events:
+            if event.duration in range(duration_min,
+                                       (duration_max + 1 if duration_max is not None else event.duration + 1)):
+                events.append(event)
+
+        return events
+
     def __len__(self):
         return len(self._events)
 
 
-
 calendar = Calendar(data)
 
-print('data', len(data))
+# print('data', len(data))
+# pprint(data)
 
-filter = calendar.filter_by_date(datetime.datetime.now(), datetime.datetime.now() + datetime.timedelta(weeks=4))
+# filter = calendar.filter_by_date(datetime.datetime.now(), datetime.datetime.now() + datetime.timedelta(weeks=4))
+c = calendar.filter_by_duration(duration_min=15, duration_max=30, duration=15)
 # pprint(filter)
 
-print(len(filter))
-pprint(calendar)
-
-
+# print(len(filter))
+# pprint(calendar.events)
+pprint(c)
