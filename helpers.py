@@ -22,3 +22,5 @@ def generate_objects():
                 data_obj.append(Event(**item))
 
     return data_obj
+
+# print(generate_objects())

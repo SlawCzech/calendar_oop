@@ -1,8 +1,8 @@
 import datetime
 from pprint import pprint
 
-from main import data
-from helpers import generate_objects
+# from main import data
+# from helpers import generate_objects
 
 from event import Reminder, Workshop, Event
 
@@ -125,25 +125,23 @@ class Calendar:
         for event in events:
             self._events.remove(event)
 
-
     def __len__(self):
         return len(self._events)
 
-
-calendar = Calendar(data)
-
-# print('data', len(data))
-# pprint(data)
-
-# filter = calendar.filter_by_date(datetime.datetime.now(), datetime.datetime.now() + datetime.timedelta(weeks=4))
-c = calendar.filter('title', search_text='ceo meeting')
-# pprint(filter)
-
-# print(len(filter))
-# pprint(calendar.events)
-pprint(c)
-
-
-print(len(calendar))
-c = calendar.remove(1)
-print(len(calendar))
+# calendar = Calendar(data)
+#
+# # print('data', len(data))
+# # pprint(data)
+#
+# # filter = calendar.filter_by_date(datetime.datetime.now(), datetime.datetime.now() + datetime.timedelta(weeks=4))
+# c = calendar.filter('title', search_text='ceo meeting')
+# # pprint(filter)
+#
+# # print(len(filter))
+# # pprint(calendar.events)
+# pprint(c)
+#
+#
+# print(len(calendar))
+# c = calendar.remove(1)
+# print(len(calendar))

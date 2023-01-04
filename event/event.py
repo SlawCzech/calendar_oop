@@ -39,7 +39,7 @@ class Event:
         self._start_date = new_start_date
 
     def __str__(self):
-        return f'{self.title}, {self.start_date}, ' \
+        return f'{self.title}, {self.start_date:%y.%m.%Y}, ' \
                f'{(self._start_date + timedelta(minutes=self.duration)):%A %b %y, %H:%M}'
 
     def __repr__(self):
@@ -48,4 +48,6 @@ class Event:
         return f'{type(self).__name__}({attrs})'
 
 
-
+#
+# ev = Event(1, datetime.now() + timedelta(days=1), 30, 'title', 'desc', 'own')
+# print(ev)

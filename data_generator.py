@@ -48,5 +48,5 @@ class DataGenerator:
 
 
 # d = DataGenerator.load_data('events_data.json')
-
+#
 # print(d)

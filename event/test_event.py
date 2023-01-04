@@ -56,3 +56,7 @@ def test_start_date_invalid_type_raise_type_error():
 
 def test_start_date_positive(event):
     assert f'{event.start_date:"%A %b %y, %H:%M"}' == f'{(datetime.now() + timedelta(days=1)):"%A %b %y, %H:%M"}'
+
+
+def test_str_representation(event):
+    assert f'{event}' == f'{event.title}, {event.start_date:%y.%m.%Y}, {(event._start_date + timedelta(minutes=event.duration)):%A %b %y, %H:%M}'
